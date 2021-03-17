@@ -5,8 +5,53 @@
 //------------------------------
 
 // Write the assignment code here
-
-
+class Real{
+protected:
+  float realnum{0};
+public:
+  Real(float coefone){
+    realnum = coefone;
+  }
+  float GetReal(){
+    return realnum;
+  }
+  Real operator+(const float& b){
+    realnum += b;
+    return *this;
+  }
+};
+class Complex: public Real{
+protected:
+  float compnum{0};
+public:
+  Complex(float coefone, float coeftwo): Real(coefone){
+    compnum = coeftwo;
+  }
+  float GetImaginary(){
+    return compnum;
+  }
+  Complex operator+(const float& c){
+    compnum += c;
+    realnum += c;
+    return *this;
+  }
+};
+class Surreal: public Complex{
+  float surnum{0};
+public:
+  Surreal(float coefone, float coeftwo, float coefthree): Complex(coefone, coeftwo){
+    surnum = coefthree;
+  }
+  float GetSurreal(){
+    return surnum;
+  }
+  Surreal operator+(const float& d){
+    surnum += d;
+    realnum += d;
+    compnum += d;
+    return *this;
+  }
+};
 //------------------------------
 //   DO NOT MODIFY TEST CASES
 //------------------------------
